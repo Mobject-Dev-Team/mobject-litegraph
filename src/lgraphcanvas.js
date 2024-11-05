@@ -2410,7 +2410,7 @@ export class LGraphCanvas {
                 def_cb: node.onDropItem
             }, e);
             // if getting a positive result, return
-            if (typeof r !== 'undefined' && (r === true || (typeof r === "object" && r.return_value))) {
+            if (r != null && (r === true || (typeof r === "object" && r.return_value))) {
                 return true;
             }
 
@@ -2419,7 +2419,7 @@ export class LGraphCanvas {
                 def_cb: this.onDropItem
             }, e);
             // if getting a positive result, return
-            if (typeof r !== 'undefined' && (r === true || (typeof r === "object" && r.return_value))) {
+            if (r != null && (r === true || (typeof r === "object" && r.return_value))) {
                 return true;
             }
 

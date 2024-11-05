@@ -2491,14 +2491,19 @@ export class LGraphCanvas {
      * selects several nodes (or adds them to the current selection)
      * @method selectNodes
      **/
+    // This function has been patched due to an error when cloning a node.  It calls selectNodes and passes
+    // the cloned nodes in as members of an object which needed to be handled.
     selectNodes(nodes, add_to_current_selection) {
         if (!add_to_current_selection) {
             this.deselectAllNodes();
         }
 
         nodes = nodes || this.graph._nodes;
-        if(typeof nodes === "string") nodes = [nodes];
-        if(typeof nodes.length === "undefined") nodes = [nodes];
+        if (typeof nodes === "string") {
+            nodes = [nodes];
+        } else if (!Array.isArray(nodes) && typeof nodes === "object") {
+            nodes = Object.values(nodes);
+        }
         Object.values(nodes).forEach((node) => {
             if (node.is_selected) {
                 this.deselectNode(node);

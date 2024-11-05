@@ -3599,6 +3599,10 @@
       key: "checkDropItem",
       value:
       // called if the graph doesn't have a default drop item behaviour
+
+      // This function has been overidden to expand the functionality to add graceful fall over if the node
+      // has not yet been registered with litegraph (this can happen if you are still waiting for blueprints)
+      // also adding in the widgetName on dropfile call. 
       function checkDropItem(e) {
         if (e.dataTransfer.files.length) {
           var file = e.dataTransfer.files[0];
@@ -3667,6 +3671,8 @@
        * selects several nodes (or adds them to the current selection)
        * @method selectNodes
        **/
+      // This function has been patched due to an error when cloning a node.  It calls selectNodes and passes
+      // the cloned nodes in as members of an object which needed to be handled.
     }, {
       key: "selectNodes",
       value: function selectNodes(nodes, add_to_current_selection) {
@@ -3675,8 +3681,11 @@
           this.deselectAllNodes();
         }
         nodes = nodes || this.graph._nodes;
-        if (typeof nodes === "string") nodes = [nodes];
-        if (typeof nodes.length === "undefined") nodes = [nodes];
+        if (typeof nodes === "string") {
+          nodes = [nodes];
+        } else if (!Array.isArray(nodes) && _typeof(nodes) === "object") {
+          nodes = Object.values(nodes);
+        }
         Object.values(nodes).forEach(function (node) {
           var _node$inputs, _node$outputs;
           if (node.is_selected) {

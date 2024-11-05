@@ -29,7 +29,7 @@ export default {
       presets: ["@babel/preset-env"],
     }),
     css({
-      output: "litegraph.css",
+      output: "mobject-litegraph.css",
     }),
     cssLicenseBanner(),
     // terser(),

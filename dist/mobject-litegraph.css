@@ -49,6 +49,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 */
+/* this CSS contains only the basic CSS needed to run the app and use it */
+
 .lgraphcanvas {
   /*cursor: crosshair;*/
   user-select: none;

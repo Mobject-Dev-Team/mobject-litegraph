@@ -9,15 +9,39 @@ import css from "rollup-plugin-css-only";
 export default {
   input: "./src/index.js",
   output: [
+    // UMD Build
     {
       file: "dist/mobject-litegraph.bundle.js",
       format: "umd",
       name: "MobjectLitegraph",
     },
+    // Minified UMD Build
     {
       file: "dist/mobject-litegraph.bundle.min.js",
       format: "umd",
       name: "MobjectLitegraph",
+      plugins: [terser()],
+    },
+    // ESM Build
+    {
+      file: "dist/mobject-litegraph.bundle.esm.js",
+      format: "esm",
+    },
+    // Minified ESM Build
+    {
+      file: "dist/mobject-litegraph.bundle.esm.min.js",
+      format: "esm",
+      plugins: [terser()],
+    },
+    // CommonJS Build
+    {
+      file: "dist/mobject-litegraph.bundle.cjs.js",
+      format: "cjs",
+    },
+    // Minified CommonJS Build
+    {
+      file: "dist/mobject-litegraph.bundle.cjs.min.js",
+      format: "cjs",
       plugins: [terser()],
     },
   ],

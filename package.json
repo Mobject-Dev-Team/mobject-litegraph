@@ -2,7 +2,22 @@
   "name": "mobject-litegraph",
   "version": "0.1.1",
   "description": "A flow graph node editor on the web based on a fork or litegraph.js",
-  "main": "./src/index.js",
+  "type": "module",
+  "main": "dist/mobject-litegraph.bundle.cjs.js",
+  "module": "dist/mobject-litegraph.bundle.esm.js",
+  "browser": "dist/mobject-litegraph.bundle.js",
+  "exports": {
+    ".": {
+      "import": "./dist/mobject-litegraph.bundle.esm.min.js",
+      "require": "./dist/mobject-litegraph.bundle.cjs.min.js",
+      "default": "./dist/mobject-litegraph.bundle.min.js"
+    },
+    "./full": {
+      "import": "./dist/mobject-litegraph.bundle.esm.js",
+      "require": "./dist/mobject-litegraph.bundle.cjs.js",
+      "default": "./dist/mobject-litegraph.bundle.js"
+    }
+  },
   "scripts": {
     "build": "rollup -c"
   },
@@ -10,11 +25,10 @@
     "type": "git",
     "url": "git+https://github.com/Mobject-Dev-Team/mobject-litegraph"
   },
-  "author": "Mobject Dev Team <npm@mobject.org>",
+  "author": "benhar-dev",
   "license": "MIT",
   "files": [
-    "dist",
-    "css/litegraph.css"
+    "dist"
   ],
   "bugs": {
     "url": "https://github.com/Mobject-Dev-Team/mobject-litegraph/issues"

@@ -1512,6 +1512,24 @@ export class LGraphNode {
             size[1] = Math.max( size[1], this.constructor.min_height);
         }
 
+        // process widget width
+        let widgets_maximum_width = 0;
+
+        if (this.widgets && this.widgets.length) {
+        for (var i = 0, l = this.widgets.length; i < l; ++i) {
+            let widget_size = this.widgets[i].computeSize();
+            widgets_maximum_width = Math.max(widgets_maximum_width, widget_size[0]);
+            }
+        }
+
+        size[0] = Math.max(size[0], title_width, widgets_maximum_width);
+
+        if (this.onComputeSize) {
+            var custom_size = this.onComputeSize(size);
+            size[0] = Math.max(size[0], custom_size[0]);
+            size[1] = Math.max(size[1], custom_size[1]);
+        }
+
         // size[1] += 6; // y margin
         return size;
     }

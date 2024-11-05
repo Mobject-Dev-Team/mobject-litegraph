@@ -1683,7 +1683,7 @@
             def_cb: node.onDropItem
           }, e);
           // if getting a positive result, return
-          if (r === true || _typeof(r) == "object" && r.return_value) {
+          if (typeof r !== 'undefined' && (r === true || _typeof(r) === "object" && r.return_value)) {
             return true;
           }
 
@@ -1692,7 +1692,7 @@
             def_cb: _this.onDropItem
           }, e);
           // if getting a positive result, return
-          if (r === true || _typeof(r) == "object" && r.return_value) {
+          if (typeof r !== 'undefined' && (r === true || _typeof(r) === "object" && r.return_value)) {
             return true;
           }
           LiteGraph.log_info("lgraphcanvas", "processDrop", "neither node and canvas has processed the drop");

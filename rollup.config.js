@@ -56,7 +56,6 @@ export default {
       output: "mobject-litegraph.css",
     }),
     cssLicenseBanner(),
-    // terser(),
     license({
       sourcemap: true,
       cwd: process.cwd(),

@@ -13424,7 +13424,7 @@ var LGraphNode = /*#__PURE__*/function () {
       var _this$widgets3;
       (_this$widgets3 = this.widgets) !== null && _this$widgets3 !== void 0 ? _this$widgets3 : this.widgets = [];
       this.widgets.push(custom_widget);
-      this.resetSize();
+      this.setSize(this.computeSize());
       return custom_widget;
     }
 

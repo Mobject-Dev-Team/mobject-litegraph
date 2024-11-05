@@ -2425,23 +2425,32 @@ export class LGraphCanvas {
     }
 
     // called if the graph doesn't have a default drop item behaviour
+
+    // This function has been overidden to expand the functionality to add graceful fall over if the node
+    // has not yet been registered with litegraph (this can happen if you are still waiting for blueprints)
+    // also adding in the widgetName on dropfile call. 
     checkDropItem(e) {
         if (e.dataTransfer.files.length) {
             var file = e.dataTransfer.files[0];
             var ext = LGraphCanvas.getFileExtension(file.name);
             var nodetype = LiteGraph.node_types_by_file_extension[ext];
             if (nodetype) {
-                this.graph.beforeChange();
-                var node = LiteGraph.createNode(nodetype.type);
-                node.pos = [e.canvasX, e.canvasY];
-                this.graph.add(node, false, {doProcessChange: false});
-                node.processCallbackHandlers("onDropFile",{
-                    def_cb: node.onDropFile
-                }, file);
-                this.graph.onGraphChanged({action: "fileDrop", doSave: true});
-                this.graph.afterChange();
+              this.graph.beforeChange();
+              var node = LiteGraph.createNode(nodetype.type);
+              if (!node) {
+                console.log(nodetype.type, "is not available to handle", ext);
+                return;
+              }
+              node.pos = [e.canvasX, e.canvasY];
+              this.graph.add(node, false, { doProcessChange: true });
+              node.processCallbackHandlers("onDropFile",{
+                def_cb: node.onDropFile,
+                }, file, nodetype.widgetName || null
+              );
+              this.graph.onGraphChanged({ action: "fileDrop", doSave: true });
+              this.graph.afterChange();
             }
-        }
+          }
     }
 
     processNodeDblClicked(n) {

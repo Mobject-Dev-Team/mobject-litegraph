@@ -3605,13 +3605,17 @@ var LGraphCanvas = /*#__PURE__*/function () {
         if (nodetype) {
           this.graph.beforeChange();
           var node = LiteGraph.createNode(nodetype.type);
+          if (!node) {
+            console.log(nodetype.type, "is not available to handle", ext);
+            return;
+          }
           node.pos = [e.canvasX, e.canvasY];
           this.graph.add(node, false, {
-            doProcessChange: false
+            doProcessChange: true
           });
           node.processCallbackHandlers("onDropFile", {
             def_cb: node.onDropFile
-          }, file);
+          }, file, nodetype.widgetName || null);
           this.graph.onGraphChanged({
             action: "fileDrop",
             doSave: true

@@ -238,7 +238,7 @@ export class LiteGraphClass {
         this.CallbackHandler = CallbackHandler;
 
         // base inclusion
-        this.includeBasicNodes();
+        // this.includeBasicNodes();
     }
 
     includeBasicNodes(){

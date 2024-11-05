@@ -1,0 +1,39 @@
+{
+  "name": "mobject-litegraph",
+  "version": "0.1.0",
+  "description": "A flow graph node editor on the web based on a fork or litegraph.js",
+  "main": "./src/index.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mobject-Dev-Team/mobject-litegraph"
+  },
+  "author": "Mobject Dev Team <npm@mobject.org>",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "css/litegraph.css"
+  ],
+  "bugs": {
+    "url": "https://github.com/Mobject-Dev-Team/mobject-litegraph/issues"
+  },
+  "homepage": "https://github.com/Mobject-Dev-Team/mobject-litegraph#readme",
+  "keywords": [
+    "flow",
+    "graph",
+    "editor",
+    "web"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "rollup": "^2.79.2",
+    "rollup-plugin-css-only": "^4.5.2",
+    "rollup-plugin-license": "^3.5.3",
+    "rollup-plugin-terser": "^7.0.2"
+  }
+}

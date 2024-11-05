@@ -1650,6 +1650,7 @@ export class LGraphNode {
     addCustomWidget(custom_widget) {
         this.widgets ??= [];
         this.widgets.push(custom_widget);
+        this.resetSize();
         return custom_widget;
     }
 

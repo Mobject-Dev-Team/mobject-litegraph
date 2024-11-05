@@ -1626,9 +1626,14 @@ export class LGraphCanvas {
 
         if (e.which == 1) {
 
-            if( this.node_widget ) {
-                this.processNodeWidgets( this.node_widget[0], this.graph_mouse, e );
-            }
+            if (this.node_widget) {
+                this.processNodeWidgets(
+                  this.node_widget[0],
+                  this.graph_mouse,
+                  e,
+                  this.node_widget[1]
+                );
+              }
 
             // left button
             this.node_widget = null;

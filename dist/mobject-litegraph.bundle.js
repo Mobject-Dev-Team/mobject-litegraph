@@ -3157,7 +3157,7 @@
         LiteGraph.log_debug("pointerevents: processMouseUp which: " + e.which);
         if (e.which == 1) {
           if (this.node_widget) {
-            this.processNodeWidgets(this.node_widget[0], this.graph_mouse, e);
+            this.processNodeWidgets(this.node_widget[0], this.graph_mouse, e, this.node_widget[1]);
           }
 
           // left button

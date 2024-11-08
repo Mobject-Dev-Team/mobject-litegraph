@@ -12378,6 +12378,8 @@
         }
 
         callbackhandler_setup(){
+            if(this.cb_handler) return;
+            
             this.cb_handler = new CallbackHandler(this);
             // register CallbackHandler methods on this // Should move as class standard class methods?
             // this.registerCallbackHandler = function(){ return this.cb_handler.registerCallbackHandler(...arguments); };

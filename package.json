@@ -3,19 +3,19 @@
   "version": "0.1.8",
   "description": "A flow graph node editor on the web based on a fork or litegraph.js",
   "type": "module",
-  "main": "dist/mobject-litegraph.bundle.cjs.js",
-  "module": "dist/mobject-litegraph.bundle.esm.js",
-  "browser": "dist/mobject-litegraph.bundle.js",
+  "main": "dist/js/mobject-litegraph.bundle.cjs.js",
+  "module": "dist/js/mobject-litegraph.bundle.esm.js",
+  "browser": "dist/js/mobject-litegraph.bundle.js",
   "exports": {
     ".": {
-      "import": "./dist/mobject-litegraph.bundle.esm.min.js",
-      "require": "./dist/mobject-litegraph.bundle.cjs.min.js",
-      "default": "./dist/mobject-litegraph.bundle.min.js"
+      "import": "./dist/js/mobject-litegraph.bundle.esm.min.js",
+      "require": "./dist/js/mobject-litegraph.bundle.cjs.min.js",
+      "default": "./dist/js/mobject-litegraph.bundle.min.js"
     },
     "./full": {
-      "import": "./dist/mobject-litegraph.bundle.esm.js",
-      "require": "./dist/mobject-litegraph.bundle.cjs.js",
-      "default": "./dist/mobject-litegraph.bundle.js"
+      "import": "./dist/js/mobject-litegraph.bundle.esm.js",
+      "require": "./dist/js/mobject-litegraph.bundle.cjs.js",
+      "default": "./dist/js/mobject-litegraph.bundle.js"
     }
   },
   "scripts": {
@@ -44,6 +44,7 @@
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-terser": "^0.4.4",
     "rollup": "^2.79.2",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-css-only": "^4.5.2",
     "rollup-plugin-license": "^3.5.3"
   }

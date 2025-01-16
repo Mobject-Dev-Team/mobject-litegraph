@@ -1536,14 +1536,20 @@ export class LGraphNode {
         return size;
     }
 
-    getSlotsHeight(){
-        // minimum height calculated by slots or 1
+    getSlotsHeight() {
+        // Filter inputs to exclude those with a widget_name
+        const validInputsCount = this.inputs 
+            ? this.inputs.filter(input => !input.widget_name).length 
+            : 0;
+    
+        // Calculate minimum height using valid inputs
         const rowHeight = Math.max(
-            this.inputs ? this.inputs.length : 1,
+            validInputsCount,
             this.outputs ? this.outputs.length : 1,
-            1,
+            1
         ) * LiteGraph.NODE_SLOT_HEIGHT + 10;
-        // add margin (should this be always?)
+    
+        // Add margin (should this be always?)
         return rowHeight + (this.constructor.slot_start_y || 0);
     }
 
@@ -2630,10 +2636,50 @@ export class LGraphNode {
         } else {
             out[0] = this.pos[0] + this.size[0] + 1 - offset;
         }
+
+        if (
+            is_input &&
+            this.inputs &&
+            this.inputs[slot_number] &&
+            this.inputs[slot_number].widget_name
+          ) {
+            
+            let widget_name = this.inputs[slot_number].widget_name;
+            let widget = this.widgets.find(widget => widget.name === widget_name);
+
+            out[1] = this.pos[1] + widget.last_y + widget.computeSize()[1] / 2;
+            return out;
+          }
+
+
+        if (is_input) {
+            var actual_slot_pos = slot_number;
+      
+            for (var i = slot_number - 1; i > 0; i--) {
+              if (
+                is_input &&
+                this.inputs &&
+                this.inputs[i] &&
+                this.inputs[slot_number].widget_name
+              ) {
+                actual_slot_pos--;
+              }
+            }
+
         out[1] =
             this.pos[1] +
-            (slot_number + 0.7) * LiteGraph.NODE_SLOT_HEIGHT +
+            (actual_slot_pos + 0.7) * LiteGraph.NODE_SLOT_HEIGHT +
             (this.constructor.slot_start_y || 0);
+        } else {
+            out[1] =
+              this.pos[1] +
+              (slot_number + 0.7) * LiteGraph.NODE_SLOT_HEIGHT +
+              (this.constructor.slot_start_y || 0);
+          }
+
+
+
+
         return out;
     }
 

@@ -1,6 +1,6 @@
 {
   "name": "mobject-litegraph",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "A flow graph node editor on the web based on a fork or litegraph.js",
   "type": "module",
   "main": "dist/js/mobject-litegraph.bundle.cjs.js",

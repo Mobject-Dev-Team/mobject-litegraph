@@ -10015,7 +10015,7 @@ class LGraphCanvas {
         node.setDirtyCanvas(true, true);
     }
 
-    getCanvasMenuOptions() {
+    getCanvasMenuOptions(event) {
         var options = null;
         var that = this;
         let r = this.processCallbackHandlers("getMenuOptions",{
@@ -10032,7 +10032,7 @@ class LGraphCanvas {
                 {
                     content: "Search",
                     has_submenu: false,
-                    callback: that.showSearchBox,
+                    callback: function (){that.showSearchBox(event);},
                 },
                 { content: "Add Group", callback: LGraphCanvas.onGroupAdd },
                 // { content: "Arrange", callback: that.graph.arrange },
@@ -10292,7 +10292,7 @@ class LGraphCanvas {
                 // on node
                 menu_info = this.getNodeMenuOptions(node);
             } else {
-                menu_info = this.getCanvasMenuOptions();
+                menu_info = this.getCanvasMenuOptions(event);
                 var group = this.graph.getGroupOnPos(
                     event.canvasX,
                     event.canvasY,

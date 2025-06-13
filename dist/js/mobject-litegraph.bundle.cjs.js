@@ -2627,6 +2627,9 @@ class LGraphCanvas {
                 var widgetOver = this.processNodeWidgets( node, this.graph_mouse ); // not passing event! just check, e );
                 if (widgetOver){
                     this.over_widget = widgetOver;
+                    if (typeof widgetOver.onMouseOver === "function") {
+                        widgetOver.onMouseOver(e, [e.canvasX - node.pos[0], e.canvasY - node.pos[1]], node);
+                    }
                 }
 
                 // if dragging a link
@@ -6558,8 +6561,9 @@ class LGraphCanvas {
                 widget_height = w.height || height;
             }
             // outside
+            // modified to remove the 6 and 12 offset from blocking the widget
             if ( w != active_widget &&
-                (x < 6 || x > widget_width - 12 || y < w.last_y || y > w.last_y + widget_height || w.last_y === undefined) ){
+                (x < 0 || x > widget_width || y < w.last_y || y > w.last_y + widget_height || w.last_y === undefined) ){
                 continue;
             }
 
@@ -12526,6 +12530,14 @@ class LGraphNode {
     }
     get pos() {
         return this._pos;
+    }
+
+    get width() {
+        return this.size[0];
+    }
+
+    get height() {
+        return this.size[1];
     }
 
     /**

@@ -147,6 +147,14 @@ export class LGraphNode {
         return this._pos;
     }
 
+    get width() {
+        return this.size[0];
+    }
+
+    get height() {
+        return this.size[1];
+    }
+
     /**
      * configure a node from an object containing the serialized info
      * @method configure

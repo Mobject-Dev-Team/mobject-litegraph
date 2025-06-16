@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.13
+
+- added support for widget context menu
+
 ## 0.1.12
 
 - added mouse over support to widget

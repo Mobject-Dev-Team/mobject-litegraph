@@ -1238,6 +1238,12 @@ export class LGraphCanvas {
 
                 // is it hover a node ?
                 if (node) {
+                    // check if pointer is over a widget
+                    var widget = this.processNodeWidgets(node, this.graph_mouse);
+                    if(widget){
+                        this.processWidgetContextMenu(node, widget, e);
+                        return false;
+                    }
                     if(Object.keys(this.selected_nodes).length
                         && (this.selected_nodes[node.id] || e.shiftKey || e.ctrlKey || e.metaKey)
                     ) {
@@ -9081,6 +9087,47 @@ export class LGraphCanvas {
 
         return o;
     }
+
+
+    getWidgetMenuOptions(node, widget, event) {
+        if (!widget) return null;
+
+        const localMouse = [
+            event.canvasX - node.pos[0],
+            event.canvasY - node.pos[1]
+        ];
+
+        if (typeof widget.getContextMenuOptions === "function") {
+            return widget.getContextMenuOptions(event, localMouse, node);
+        }
+
+        // fallback to node's logic
+        if (node?.processCallbackHandlers) {
+            const r = node.processCallbackHandlers("getWidgetMenuOptions", { def_cb: node.getWidgetMenuOptions }, widget, event, localMouse);
+            if (r && typeof r === "object" && r.return_value)
+                return r.return_value;
+        }
+
+        if (node?.getWidgetMenuOptions) {
+            return node.getWidgetMenuOptions(widget, event, localMouse);
+        }
+
+        return null;
+    }
+
+    // shows a context menu for a widget
+    processWidgetContextMenu(node, widget, event){
+        const menu = this.getWidgetMenuOptions(node, widget, event);
+        if(!menu || !menu.length) return;
+        const ref_window = this.getCanvasWindow();
+
+        LiteGraph.ContextMenu(menu, {
+            event: event,
+            extra: widget,
+            title: widget.label || widget.name
+        }, ref_window);
+    }
+
 
     processContextMenu(node, event) {
         var that = this;

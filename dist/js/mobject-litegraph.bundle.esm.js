@@ -2693,6 +2693,9 @@ class LGraphCanvas {
                     } else {
                         this.canvas.style.cursor = "crosshair";
                     }
+                    if (this.over_widget && this.over_widget.cursor) {
+                        this.canvas.style.cursor = this.over_widget.cursor;
+                    }
                 }
             } else { // not over a node
 

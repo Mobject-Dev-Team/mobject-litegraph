@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.14
+
+- added support for widget mouse change, via widget.cursor Leave null for default.
+
 ## 0.1.13
 
 - added support for widget context menu

@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.15
+
+- corrected bug in deselect, where node remained in collection.
+
 ## 0.1.14
 
 - added support for widget mouse change, via widget.cursor Leave null for default.

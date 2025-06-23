@@ -2572,6 +2572,9 @@ export class LGraphCanvas {
         node.outputs?.forEach((out) => {
             out.links?.forEach((link) => delete this.highlighted_links?.[link])
         });
+
+        // remove from selected nodes
+        delete this.selected_nodes[node.id];
     }
 
 

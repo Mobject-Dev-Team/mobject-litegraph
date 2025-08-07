@@ -1,41 +1,15 @@
-# mobject-litegraph
+# ⛔ ARCHIVED - mobject-litegraph has been merged into mobject-graph-ui Frontend
 
-A fork of the exceptional litegraph.js library. This cut-down version which is used in mobject-graph-ui.
+> **This repository is archived and no longer maintained. The code has been integrated directly into the mobject-graph-ui repository.**
 
-## Features
+## 🚀 New Location
 
-- **Web-Based Node Editor**: Utilize a complete graphical editor to manage nodes and create complex flow graphs directly in the browser.
-- **Customizable Appearance**: Includes CSS for easy customization of the node editor's look and feel.
-- **Extensible and Modular**: Designed to be easily extendable for various applications involving graphical node representations.
+As of August 7, 2025, mobject-litegraph is now part of the mobject-graph-u monorepo:
 
-## Installation
+- **Source Code**: https://github.com/Mobject-Dev-Team/mobject-graph-ui/tree/main/src/lib/litegraph
+- **Repository**: https://github.com/Mobject-Dev-Team/mobject-graph-ui
 
-Install `mobject-litegraph` via npm:
+## 📝 For Developers
 
-```bash
-npm install mobject-litegraph
-```
-
-## Building
-
-To build the project from source:
-
-First install the dependencies,
-
-```bash
-npm install
-```
-
-Now you can build using,
-
-```bash
-npm run build
-```
-
-## License
-
-mobject-litegraph is MIT licensed. For more details, see the LICENSE file in the repository.
-
-## Credits
-
-This project is a fork of [atlason/litegraph.js](https://github.com/atlasan/litegraph.js), which is itself based on work by Daniel Lewis from [Daniel Lewis's litegraph.js](https://github.com/daniel-lewis-ab/litegraph.js), originally developed by [jagenjo/litegraph.js](https://github.com/jagenjo/litegraph.js).
+- **Report Issues**: Please report any issues at https://github.com/Mobject-Dev-Team/mobject-graph-ui/issues
+- **Contribute**: All contributions should be made to the mobject-graph-ui repository
